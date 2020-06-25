@@ -4,16 +4,18 @@ from qiskit.providers.ibmq import least_busy
 from qiskit.tools.monitor import job_monitor
 from qiskit.providers.aer.noise import NoiseModel
 from qiskit.tools.visualization import plot_histogram
+from math import atan2, sqrt
 
-graph = {'IR': ([], [.75, .25]),
-         'SM': (['IR'], [.3, .8, .7, .2]),
+graph = {'IR': ([], [.75, .25]), # From 2004.14803, Fig 10
+         'SM': (['IR'], [.3, .7, .8, .2]), #P(0|!A), P(1|!A), P(0|A), P(1|A)
          'OI': ([], [.6, .4]),
-         'SP': (['OI', 'SM'], [.9, .5, .4, .2, .1, .5, .6, .8])
+         'SP': (['OI', 'SM'], [.9, .1, .5, .5, .4, .6, .2, .8])
         }
 
 def main():
     qbits = num_qbits_needed(graph)
     print("need: " + str(qbits) + " qbits")
+    
     #circuit = QuantumCircuit(1,1)
     #circuit.h(0)
     #circuit.measure(0,0)
@@ -24,10 +26,14 @@ def num_qbits_needed(graph):
     for state in graph:
         counter += 1
         in_edges = len(graph[state][0])
-        if(in_edges != 0):
+        if in_edges != 0:
             counter += in_edges-1
     return counter
 
+#TODO assertAlmostEqual(angle_from_probability(.8,.2), 2.2143)
+def angle_from_probability(p1, p0):
+    #XXX atan2 here?
+    return 2 * atan2(sqrt(p1), sqrt(p0))
 
 def run_circuit(circuit, output_file='results', draw_circuit=True, use_sim=True, use_noise=False, use_qcomp=False):
     if draw_circuit:
