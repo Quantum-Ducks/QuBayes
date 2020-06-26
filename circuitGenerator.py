@@ -45,17 +45,15 @@ def create_circuit(graph):
 def add_ccy(circuit, qbits, ancillabits):
     pass
 
-#XXX Gross
-# can we do this with eq. 15??
 def num_qbits_needed(graph):
-    qbits = 0
-    cbits = 0
+    max_edges = -1 
     for state in graph:
-        qbits += 1
-        cbits += 1
-        in_edges = len(graph[state][0])
-        if in_edges != 0: # count ancilla qbits
-            qbits += in_edges-1
+        in_edges = len(graph[state][0]) # aka num of parents
+        if in_edges > max_edges:
+            max_edges = in_edges
+    
+    qbits = len(graph) + max_edges - 1 # equation (15)
+    cbits = len(graph) # number of measurements
     return (qbits, cbits)
 
 #TODO assertAlmostEqual(angle_from_probability(.8,.2), 2.2143)
