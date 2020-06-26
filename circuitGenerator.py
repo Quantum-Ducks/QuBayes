@@ -27,23 +27,91 @@ def main():
 def create_circuit(graph):
     (qbits, cbits) = num_qbits_needed(graph)
     qc = QuantumCircuit(qbits, cbits)
-    #XXX how to keep track as to what bits are used and what for
+    bit_assignment = {}
+    ancillabits = []
     next_free_qbit = 0
     #Loop and find the parentless nodes, assign their rotations first
     for node in graph:
         if len(graph[node][0])==0:
-            #Gross graph work
             probs = graph[node][1]
-            print(probs)
             qc.ry(angle_from_probability(probs[1],probs[0]), next_free_qbit)
+            bit_assignment[node] = next_free_qbit # keep track of what node is what qbit
             next_free_qbit += 1
     qc.barrier()
+
+    #Loop and find each node that has all its parents complete and add it
+    #TODO a topological sort first would save this unnessacary looping
+    #XXX bad code, maybe the worst
+    while True: # Loop until no states are added
+        found_new = False
+        for node in graph:
+            if node not in bit_assignment:
+                for parent in node[0]:  # get parents
+                    if parent not in bit_assignment:
+                        continue  # one of the parents needs to be processed first
+                # Found a node we are ready to process
+                found_new = True
+                # TODO handle multi-bit states
+                bit_assignment[node] = next_free_qbit # give it a qbit
+                next_free_qbit += 1
+                # FIXME hardcoded 1/2 parent, will generalize later
+                if len(graph[node]) == 1:
+                    print("1 parent not implemented") 
+                    raise NotImplementedError
+                if len(graph[node]) == 2:
+                    # TODO this is gross
+                    print(bit_assignment)
+                    if(len(ancillabits) < 1): # need one more ancilla bit
+                        ancillabits += [next_free_qbit]
+                        next_free_qbit+=1
+                    parent1 = bit_assignment[graph[node][0][0]]
+                    parent2 = bit_assignment[graph[node][0][1]]
+                    target = bit_assignment[node]
+                    # |00>
+                    qc.x(parent1)
+                    qc.x(parent2)
+                    # XXX ahhh this is horrible but will work for a demo
+                    angle = angle_from_probability(graph[node][1][1], graph[node][1][0])
+                    add_ccy(qc, [parent1,parent2,target], angle, ancillabits[0])
+                    qc.x(parent1)
+                    qc.x(parent2)
+                    # |01>
+                    qc.x(parent1)
+                    angle = angle_from_probability(graph[node][1][3], graph[node][1][2])
+                    add_ccy(qc, [parent1,parent2,target], angle, ancillabits[0])
+                    qc.x(parent1)
+                    # |10>
+                    qc.x(parent2)
+                    angle = angle_from_probability(graph[node][1][5], graph[node][1][4])
+                    add_ccy(qc, [parent1,parent2,target], angle, ancillabits[0])
+                    qc.x(parent2)
+                    # |11>
+                    angle = angle_from_probability(graph[node][1][7], graph[node][1][6])
+                    add_ccy(qc, [parent1,parent2,target], angle, ancillabits[0])
+                break  # start looping again, painfully inefficient
+        if not found_new:
+            break # Completed a full loop over the nodes and all were added, done
+
+    c_counter = 0
+    for bit in bit_assignment:
+        qc.measure(bit_assignment[bit], c_counter)
+        c_counter += 1
     return qc
 
 # TODO Code section 3.2
 # XXX Can we generalize this to C^nY gates
-def add_ccy(circuit, qbits, ancillabits):
-    pass
+# ex: add_ccy(qc, [0,1,2], math.pi/3, 3)
+def add_ccy(circuit, qbits, angle, ancillabit):
+    # XXX Should we use this link instead of this function:
+    # https://qiskit.org/documentation/tutorials/circuits_advanced/1_advanced_circuits.html
+    circuit.barrier() # for visualization
+    circuit.ccx(qbits[0], qbits[1], ancillabit)
+    circuit.ry(angle/2,qbits[2])
+    circuit.cx(ancillabit, qbits[2])
+    circuit.ry(-angle/2, qbits[2] )
+    circuit.cx(ancillabit, qbits[2])
+    circuit.ccx(qbits[0], qbits[1], ancillabit)
+    circuit.barrier() # for visualization
 
 def num_qbits_needed(graph):
     max_edges = -1 
