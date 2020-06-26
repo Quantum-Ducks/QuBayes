@@ -46,6 +46,7 @@ def add_ccy(circuit, qbits, ancillabits):
     pass
 
 #XXX Gross
+# can we do this with eq. 15??
 def num_qbits_needed(graph):
     qbits = 0
     cbits = 0
@@ -59,7 +60,7 @@ def num_qbits_needed(graph):
 
 #TODO assertAlmostEqual(angle_from_probability(.8,.2), 2.2143)
 def angle_from_probability(p1, p0):
-    #XXX atan2 here?
+    # From 2004.14803 equation 20
     return 2 * atan2(sqrt(p1), sqrt(p0))
 
 def run_circuit(circuit, output_file='results', draw_circuit=True, use_sim=True, use_noise=False, use_qcomp=False):
