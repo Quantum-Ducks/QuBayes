@@ -1,0 +1,8 @@
+Netica 5.04 Linux (AF), (C) 1992-2012 Norsys Software Corp.
+
+Netica operating without a password; there are some limitations.
+
+The probability of cases increasing with no stay at home and bad testing is 0.818182
+The probability of cases decreasing with a stay at home order and bad testing is 0.293103
+Leaving Netica.
+
