@@ -1,9 +1,7 @@
 import numpy as np
 from itertools import product
 
-
-
-def generate_cond_keys(child, *ps):
+def generate_cond_keys(child, ps):
     ##############################################
     #THIS FUNCTION WILL GENERATE A LIST OF STRINGS TO USE AS KEYS FOR CONDITIONAL PROBABILITIES
     ### INPUT ###
@@ -19,7 +17,7 @@ def generate_cond_keys(child, *ps):
     
     ranges = [[child.name], child.states.keys()]
     for p in ps:
-        ranges.append([str(p.name)+"_"])
+        ranges.append([str(p.name)])
         ranges.append(p.states.keys())
     enumed = product(*ranges)
 
@@ -36,6 +34,7 @@ def generate_cond_keys(child, *ps):
         cond_keys.append("%s_%s|%s"%(str(enum[0]), str(enum[1]), parent_str))
         
     return cond_keys
+
 
 class Node:
     # A single variable in the Bayesian network
