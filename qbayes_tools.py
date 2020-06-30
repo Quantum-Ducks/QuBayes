@@ -35,6 +35,37 @@ def generate_cond_keys(child, ps):
         
     return cond_keys
 
+def generate_parent_str(ps):
+    ##############################################
+    #THIS FUNCTION WILL GENERATE A LIST OF STRINGS TO USE AS KEYS FOR CONDITIONAL PROBABILITIES
+    ### INPUT ###
+    # s_0    int    number of states of the child node
+    # s_i    list   number of states for each parent node, from most to least significant
+    
+    ### OUTPUT ###
+    # list of strings to use as keys for conditional probabilities (included commas in case there is ever an >11-state node!)
+    ##############################################
+
+    ranges = []
+    for p in ps:
+        ranges.append([str(p.name)])
+        ranges.append(p.states.keys())
+    enumed = product(*ranges)
+
+    add = [",","_"]
+    cond_keys = []
+    for enum in enumed:
+        suff = 0
+        enum = list(enum)
+        parent_str = ''
+        for i in range(len(enum)-1):
+            suff = (suff + 1)%2
+            parent_str += str(enum[i]) + add[suff]
+        parent_str += str(enum[len(enum)-1])
+        cond_keys.append("%s"%(parent_str))
+        
+    return cond_keys
+
 
 class Node:
     # A single variable in the Bayesian network
