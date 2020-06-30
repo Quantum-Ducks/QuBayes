@@ -2,6 +2,61 @@ import numpy as np
 import pandas as pd
 
 from qbayes_tools import *
+from probabilities import *
+
+
+
+def build_graph(ntwk_func, filename = None, **kwargs):
+    if filename == None:
+        nodes = ntwk_func(**kwargs)
+    else:
+        nodes = ntwk_func(filename = filename, **kwargs)
+    
+    graph = {}
+    for node in nodes:
+        if node.parents == []:
+            #this is a root node, we just need to calculate probabilities
+            ct = 0
+            probs = []
+            got_probs = get_probabilities(node)
+            newkey = ""
+            for state_i in node.states.keys():
+                if ct == 0:
+                    newkey += node.name + "_" + state_i
+                else:
+                    newkey += "," + node.name + "_" + state_i
+                probs.append(got_probs["state_key"])
+                ct += 1
+            graph.update({newkey : ([], probs)})
+        else:
+            #this is a child node, we need conditional probabilities!
+            cond_probs = []
+            
+            p_nodes = []   #initialize a list in which to place parent nodes
+            for anode in nodes: #loop thru all nodes in network
+                if anode.name in node.parents:
+                    p_nodes.append(anode)
+            
+            cond_prob_dict = get_conditional_probability(node, p_nodes[:])
+            p_ct = 0
+            for p_str in generate_parent_str(node.parents):
+                s_ct = 0
+                for state_i in node.states.keys():
+                    s_ct += 1
+                    cond_str = node.name + "_" + state_i + "|" + p_str
+                    cond_probs.append(cond_prob_dict[cond_str])
+                    
+                    if p_ct == 0:
+                        if s_ct == 0:
+                            newkey += node.name + "_" + state_i
+                        else:
+                            nekwy += "," + node.name + "_" + state_i
+                p_ct += 1
+                
+            graph.update({newkey : (node.parents, cond_probs)})
+
+
+
 
 #################################################
 # COVID-19 EXAMPLES:
