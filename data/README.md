@@ -39,9 +39,10 @@ Data for each variable was compliled from the sources above for each of the 50 U
 
 - Testing Availability: 2 states. |1> = ≤5% of tests come back positive in a 7 day average (the World Health Organization recommends testing enough of the      population to get below 5% positive). |0> = > 5% tests come back positive. 
 
-- Cases: 2 states (Lesser model). |1> = Decreasing or flat from five day average at beginning of week to five day average at end of week |0> = Increasing from five day average at beginning of week to five day average at end of week
+- Cases: 
+2 states (Lesser model). |1> = Decreasing or flat from five day average at beginning of week to five day average at end of week |0> = Increasing from five day average at beginning of week to five day average at end of week
 
-         4 states (Mallard and Alabio models). |3> = Decreasing or flat from five day average at beginning of week to five day average at end of week. |2> = Less than 10% increase from five day average at beginning of week to five day average at end of week. |1> = 10-50% increase from five day average at beginning of week to five day average at end of week. |0> = Greater than 50% increase from five day average at beginning of week to five day average at end of week
+4 states (Mallard and Alabio models). |3> = Decreasing or flat from five day average at beginning of week to five day average at end of week. |2> = Less than 10% increase from five day average at beginning of week to five day average at end of week. |1> = 10-50% increase from five day average at beginning of week to five day average at end of week. |0> = Greater than 50% increase from five day average at beginning of week to five day average at end of week
 
 - Mask Order: 2 states. |1> = Statewide mask order in place. |0> = no statewide mask order in place.
 
@@ -49,7 +50,7 @@ Data for each variable was compliled from the sources above for each of the 50 U
 
 - Death numbers: 2 states. |1> = Decreasing or flat from five day average at beginning of week to five day average at end of week |0> = Increasing from five day average at beginning of week to five day average at end of week
 
-- Age of population: 2 states. |1> = Fraction of US state's population above 
+- Age of population: 2 states. |1> = Fraction of US state's population above age 65 is below national fraction above 65. |0> =  Fraction of US state's population above age 65 is above national fraction above 65.
 
 - Racial minority population: 4 states. 
 
