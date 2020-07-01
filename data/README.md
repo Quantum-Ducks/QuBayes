@@ -52,11 +52,10 @@ Data for each variable was compliled from the sources above for each of the 50 U
 
 - Age of population: 2 states. |1> = Fraction of US state's population above age 65 is below national fraction above 65. |0> =  Fraction of US state's population above age 65 is above national fraction above 65.
 
-- Racial minority population: 4 states. 
+- Racial minority population: 4 states. |0> = Less than 15% of US state's population is made of people of color. |1> = 15-30% of US state's population is people of color. |2> = 30-45% of US state's population is people of color. |3> = Greater than 45% of US state's population is people of color. 
 
-- Population living in poverty: 4 states. 
+- Population living in poverty: 4 states. |0> = Less than 11% of US state's population was below the poverty line in 2018. |1> = 11-13% below poverty line. |2> = 13-15% below poverty line. |3> = Greater than 15% below poverty line.
 
-- Population with underlying health conditions: 4 states.
-
+- Population with underlying health conditions: 4 states. Averages were taken for four different health conditions for each US state. The number of deaths per 100,000 total US state population in 2018 were classified into less than 150, 150-180, 180-210, and greater than 210.Total people with diabetes per 100 in 2013 were classified into less than 7.5%, 7.5-9%, 9-10.5%, and greater than 10.5%. Chronic Obstructive Pulmonary Disease (COPD) patients per 100 in 2013 were classified as 3.5-4.7%, 4.8-5.6%, 5.7-6.4%, and over 6.5%. The rounded average was then taken to classify into |0> = fewest health related problems to |3> = most health related problems.
 
 
