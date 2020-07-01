@@ -21,6 +21,9 @@ The main code is in circuitgenerator.ipynb, this can run inside jupyter-notebook
 and includes functions to create the quantum circuit and to run the
 circuit on a simulator or a real quantum computer.
 
+To run our lesser, mallard, or alabio example models, change the input of the graph builder to use the function from network_setup.py corresponding to the model you choose
+To make your own model, edit network_setup.py and network_setup.ipynb where indicated at the bottom (import dependencies currently rely on the .py files in all modules other than circuit_generator.ipynb which uses a module import_ipynb that you will need to download, as a result, any changes to depended-on modules will need to be made to both .py and .ipynb versions of the module)
+
 ### References
 Low, G. H., Yoder, T. J., & Chuang, I. L. (2014). Quantum inference on bayesian networks. Physical Review A, 89 , 062315.
 
