@@ -1,4 +1,9 @@
-# Quantum Bayesian study of COVID-19
+# QuBayes: The Quantum Bayesian Circuit Builder for All
+
+## Exemplified on an original and extremely timely real-world network (for COVID-19)
+
+### Margie Bruff*, Matthew Bryant**, Ella Castelloe*, and Madeline Hunt*
+#### *University of North Carolina at Chapel Hill, **North Carolina State University
 
 Project for *Qiskit Community Summer Jam: North Carolina*
 
