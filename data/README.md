@@ -39,18 +39,16 @@ Data for each variable was compliled from the sources above for each of the 50 U
 
 - Testing Availability: 2 states. |1> = ≤5% of tests come back positive in a 7 day average (the World Health Organization recommends testing enough of the      population to get below 5% positive). |0> = > 5% tests come back positive. 
 
-- Cases: 2 states (Lesser model). |1> = Decreasing or flat 
-         4 states (Mallard and Alabio models).
+- Cases: 2 states (Lesser model). |1> = Decreasing or flat from five day average at beginning of week to five day average at end of week |0> = Increasing from five day average at beginning of week to five day average at end of week
+         4 states (Mallard and Alabio models). |3> = Decreasing or flat from five day average at beginning of week to five day average at end of week. |2> = Less than 10% increase from five day average at beginning of week to five day average at end of week. |1> = 10-50% increase from five day average at beginning of week to five day average at end of week. |0> = Greater than 50% increase from five day average at beginning of week to five day average at end of week
 
-- Mask Order: 2 states.
+- Mask Order: 2 states. |1> = Statewide mask order in place. |0> = no statewide mask order in place.
 
-- Travel to work: 4 states.
+- Travel to work and recreation: 4 states. |0> = More than 53% decrease from baseline Jan-Feb 2020. |1> = 26-53% decrease from baseline Jan-Feb 2020. |2> = Decrease of less than 26% from baseline Jan-Feb 2020. |3> = Increase from baseline Jan-Feb 2020.
 
-- Travel to recreation: 4 states.
+- Death numbers: 2 states. |1> = Decreasing or flat from five day average at beginning of week to five day average at end of week |0> = Increasing from five day average at beginning of week to five day average at end of week
 
-- Death numbers: 2 states.
-
-- Age of population: 2 states.
+- Age of population: 2 states. |1> = Fraction of US state's population above 
 
 - Racial minority population: 4 states. 
 
