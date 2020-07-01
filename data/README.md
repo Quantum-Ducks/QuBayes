@@ -12,4 +12,29 @@ This folder contains scripts to collect and pre-process data, as well as csv fil
 
 - [Johns Hopkins Testing Data](https://coronavirus.jhu.edu/testing/individual-states/florida)
 
-- [NIH Confirmed Cases](https://datascience.nih.gov/covid-19-open-access-resources)
+- [NIH Confirmed Cases and Deaths](https://datascience.nih.gov/covid-19-open-access-resources)
+
+- [CDC Health conditions at high risk for Covid](https://www.cdc.gov/mmwr/volumes/69/wr/mm6924e2.htm)
+  
+- [CDC Heart Disease Mortality Data](https://www.cdc.gov/nchs/pressroom/sosmap/heart_disease_mortality/heart_disease.htm)
+  
+- [CDC Diabetes Data](https://nccd.cdc.gov/Toolkit/DiabetesBurden/Prevalence)
+
+- [CDC COPD Data](https://www.cdc.gov/copd/data.html)
+
+- [Kaiser Family Foundation Race Demographics Data](https://www.kff.org/other/state-indicator/distribution-by-raceethnicity/?currentTimeframe=0&selectedDistributions=white&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D)
+
+- [USDA Economic Research Service Poverty Rate Data](https://data.ers.usda.gov/reports.aspx?ID=17826)
+
+- [masks4all State Mask Requirement Data](https://masks4all.co/what-states-require-masks/)
+
+- [Kaiser Family Foundation Age Demographic Data](https://www.kff.org/other/state-indicator/distribution-by-age/?currentTimeframe=0&selectedDistributions=65&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D)
+
+
+### Description of States Our Models Use:
+
+- Mask Order
+
+- Stay At Home Order: 
+
+
