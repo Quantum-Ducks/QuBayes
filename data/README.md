@@ -33,8 +33,30 @@ This folder contains scripts to collect and pre-process data, as well as csv fil
 
 ### Description of States Our Models Use:
 
-- Mask Order
+Data for each variable was compliled from the sources above for each of the 50 US States. All variables except the last four (Age, racial demographics, poverty demographics and health demographics) were recorded for the weeks of March 22-28, April 12-18, May 10-16, and June 14-20 (all 2020).
 
-- Stay At Home Order: 
+- Stay At Home Order: 2 states. |1> = statewide stay at home order in place. |0> = no statewide stay at home order in place.
+
+- Testing Availability: 2 states. |1> = ≤5% of tests come back positive in a 7 day average (the World Health Organization recommends testing enough of the      population to get below 5% positive). |0> = > 5% tests come back positive. 
+
+- Cases: 2 states (Lesser model). |1> = Decreasing or flat 
+         4 states (Mallard and Alabio models).
+
+- Mask Order: 2 states.
+
+- Travel to work: 4 states.
+
+- Travel to recreation: 4 states.
+
+- Death numbers: 2 states.
+
+- Age of population: 2 states.
+
+- Racial minority population: 4 states. 
+
+- Population living in poverty: 4 states. 
+
+- Population with underlying health conditions: 4 states.
+
 
 
