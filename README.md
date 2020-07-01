@@ -16,6 +16,11 @@ We will construct our circuit based on the scheme devised by Low et al (2014) an
 
 Though the real quantum computer will have significant noise that will affect our results, we expect to get accurate results from the Qiskit Aer simulator. We will compare our simulated results to those from classical networks, and in doing so we will provide an extremely timely and relevant demonstration of the accuracy of this scheme. We will also simplify our main model to one that can be implemented on the real computer, limited in complexity by the number of qubits, and compare results from the simulator with those from the real quantum computer. This will allow us to quantify the effect of current noise levels on this scheme. If we have time, we will also attempt to use Ignus to further study and minimize this noise.
 
+### Usage
+The main code is in circuitgenerator.ipynb, this can run inside jupyter-notebooks
+and includes functions to create the quantum circuit and to run the
+circuit on a simulator or a real quantum computer.
+
 ### References
 Low, G. H., Yoder, T. J., & Chuang, I. L. (2014). Quantum inference on bayesian networks. Physical Review A, 89 , 062315.
 
